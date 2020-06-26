@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Examples</title>
+</head>
+<body class="smooth-scroll list-unstyled">
+    <h3 class="form-group col-md-6" style="color: red;"> COVID19 LIVE UPDATE </h3>
+    <form method="POST" class="form-group col-md-6" >
+                  
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon3">Type Country Name</span>
+            </div>
+            <input type="text" name="country_name" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+            {% csrf_token %}
+            <br>
+            <input type="submit" value="Get Country Stats" class="btn btn-success btn">
+        </div>
+    </form>
+
+    {% if user %}
+        
+        <div style="width: 400px;" class="container p-3 my-3 bg-primary text-white">
+            <p>Country Name : {{user.country}}</p>
+        </div>
+        <div style="width: 400px;" class="container p-3 my-3 bg-secondary text-white">
+            <p>Today Cases : {{user.todayCases}}</p>
+        </div>
+        <div style="width: 400px;" class="container p-3 my-3 bg-secondary text-white">
+            <p>Total Cases : {{user.cases}}</p>
+        </div>
+        <div style="width: 400px;" class="container p-3 my-3 bg-success text-white">
+            <p>Total Recovered : {{user.recovered}}</p>
+        </div>
+        <div style="width: 400px;" class="container p-3 my-3 bg-danger text-white">
+            <p>Today Deaths : {{user.todayDeaths}}</p>
+        </div>
+        <div style="width: 400px;" class="container p-3 my-3 bg-info text-white">
+            <p>Total Deaths : {{user.deaths}}</p>
+        </div>
+        <div style="width: 400px;" class="container p-3 my-3 bg-warning text-white">
+            <p>Active Cases : {{user.active}}</p>
+        </div>
+        <div style="width: 400px;" class="container p-3 my-3 bg-danger text-white">
+            <p>Critical Cases : {{user.critical}}</p>
+        </div>
+        <div style="width: 400px;" class="container p-3 my-3 bg-secondary text-white">
+            <p>Cases Per One Million : {{user.casesPerOneMillion}}</p>
+        </div>
+        <div style="width: 400px;" class="container p-3 my-3 bg-secondary text-white">
+            <p>Deaths Per One Million : {{user.deathsPerOneMillion}}</p>
+        </div>
+        <div style="width: 400px;" class="container p-3 my-3 bg-secondary text-white">
+            <p>Total Tests : {{user.totalTests}}</p>
+        </div>
+        <div style="width: 400px;" class="container p-3 my-3 bg-secondary text-white">
+            <p>Tests Per One Million : {{user.testsPerOneMillion}}</p>
+        </div>
+        
+    {% endif %}
+</body>
+</html>
